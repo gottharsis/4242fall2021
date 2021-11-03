@@ -1,10 +1,10 @@
-from flask import Flask
+from flask import Flask, render_template
 
 def create_app():
-    app = Flask(__name__)
+    app = Flask(__name__, static_folder='../client/build/static', template_folder='../client/build')
 
     @app.route("/")
     def index():
-        return "<p>Hello, world!</p>"
+        return render_template('index.html')
 
     return app
