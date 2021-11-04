@@ -1,0 +1,15 @@
+{
+  "name": "CS 4242 Fall 2021",
+  "version": "0.0.1",
+  "license": "MIT",
+  "engines": {
+    "node": "16.10.x",
+    "yarn": "1.22.x"
+  },
+  "scripts": {
+    "heroku-postbuild": "cd client && yarn install && yarn run build"
+  },
+  "cacheDirectories": [
+    "client/node_modules"
+  ]
+}
