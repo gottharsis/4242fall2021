@@ -1,0 +1,24 @@
+{
+  "name": "CX 4242 Fall 2021",
+  "description": "",
+  "scripts": {},
+  "env": {
+    "NODE_ENV": "production",
+    "YARN_PRODUCTION": "false",
+    "FLASK_ENV": "production"
+  },
+  "formation": {},
+  "addons": [],
+  "buildpacks": [
+    {
+      "url": "https://github.com/moneymeets/python-poetry-buildpack.git"
+    },
+    {
+      "url": "heroku/python"
+    },
+    {
+      "url": "heroku/nodejs"
+    }
+  ],
+  "stack": "heroku-20"
+}
