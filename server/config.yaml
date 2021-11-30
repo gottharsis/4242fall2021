@@ -18,7 +18,7 @@ proxy:
       port: 8000
       path: "/"
     heroku:
-      domain: "safe-scrubland-67589.herokuapp.com"
+      domain: "cx4242fa2021.herokuapp.com"
       address: "0.0.0.0"
       port: "$PORT"
       path: "/"
