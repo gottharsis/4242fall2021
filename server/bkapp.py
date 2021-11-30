@@ -3,49 +3,36 @@
     Adapted from bokeh-master/examples/howto/serve_embed/flask_gunicorn_embed.py
 """
 
-import os
-import time
 import asyncio
 import logging
+import os
 from threading import Thread
-
-from tornado.httpserver import HTTPServer
-from tornado.ioloop import IOLoop
+import time
 
 from bokeh import __version__ as bokeh_release_ver
 from bokeh.application import Application
 from bokeh.application.handlers import FunctionHandler
+from bokeh.layouts import column
 from bokeh.models import ColumnDataSource, Slider
 from bokeh.plotting import figure
+from bokeh.resources import get_sri_hashes_for_version
 from bokeh.sampledata.sea_surface_temperature import sea_surface_temperature
 from bokeh.server.server import BaseServer
 from bokeh.server.tornado import BokehTornado
 from bokeh.server.util import bind_sockets
 from bokeh.themes import Theme
-from bokeh.layouts import column
-from bokeh.resources import get_sri_hashes_for_version
+from tornado.httpserver import HTTPServer
+from tornado.ioloop import IOLoop
 
-# from server.config import (
-#     cwd,
-#     set_bokeh_port,
-#     FLASK_PORT,
-#     FLASK_ADDR,
-#     BOKEH_ADDR,
-#     BOKEH_PATH,
-#     BOKEH_URL,
-#     BOKEH_CDN,
-# )
-
-
-from config import (
-    cwd,
-    set_bokeh_port,
-    FLASK_PORT,
-    FLASK_ADDR,
+from server.config import (
     BOKEH_ADDR,
+    BOKEH_CDN,
     BOKEH_PATH,
     BOKEH_URL,
-    BOKEH_CDN,
+    FLASK_ADDR,
+    FLASK_PORT,
+    cwd,
+    set_bokeh_port,
 )
 
 logging.basicConfig(level=logging.INFO)
