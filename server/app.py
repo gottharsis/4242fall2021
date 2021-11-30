@@ -91,10 +91,13 @@ def index():
     return render_template("embed.html", script=script, resources=resources)
 
 
-@app.route('/<path:path>', methods=['GET'])
+@app.route('/bokeh/<path:path>', methods=['GET'])
 @cross_origin(origins='*')
 def proxy(path):
     """ HTTP Proxy """
+    # print(request.__dict__)
+    path = "bokeh/" + path
+    print('path', path)
     query = ''
     if request.query_string is not None:
         query = '?' + request.query_string.decode("utf-8")
