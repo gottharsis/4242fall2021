@@ -9,12 +9,12 @@ import logging
 
 from threading import Thread
 
-from server.app import start_tornado
-from server.bkapp import (
+from app import start_tornado
+from bkapp import (
     bk_worker,
     get_sockets
 )
-from server.config import (
+from config import (
     BOKEH_URL,
     FLASK_URL
 )
