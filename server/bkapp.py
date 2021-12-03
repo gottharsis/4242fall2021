@@ -63,7 +63,7 @@ def bkapp(doc):
         Bokeh Document --bokeh document with plot and slider
     """
     
-    data = pd.read_csv("vaers_jan_nov_2021.csv", usecols=['VAERS_ID', "SYMPTOM1", "SYMPTOM2", "SYMPTOM3", "SYMPTOM4", "SYMPTOM5", 'SEX', 'STATE', 'AGE_YRS', 'VAX_MANU', 'ALLERGIES', 'HISTORY'], encoding='utf-8-sig', encoding_errors='ignore')
+    data = pd.read_csv("https://github.com/gottharsis/4242fall2021/blob/bokeh_working/server/vaers_jan_nov_2021.csv?raw=true", usecols=['VAERS_ID', "SYMPTOM1", "SYMPTOM2", "SYMPTOM3", "SYMPTOM4", "SYMPTOM5", 'SEX', 'STATE', 'AGE_YRS', 'VAX_MANU', 'ALLERGIES', 'HISTORY'], encoding='utf-8-sig', encoding_errors='ignore')
     data.drop_duplicates(subset=['VAERS_ID'], inplace=True)
     data['ALLERGIES'] = data['ALLERGIES'].str.lower()
     data['HISTORY'] = data['HISTORY'].str.lower()
