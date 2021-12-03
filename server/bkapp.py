@@ -96,7 +96,7 @@ def bkapp(doc):
 
     # Create Input controls
     x_axis = Select(title="X-axis", value="Vaccine Manufacturer", options=["Vaccine Manufacturer", "Sex", "Age"])
-    allergy = TextInput(title="Allergy contain")
+    allergy = TextInput(title="Allergy contains")
     history = TextInput(title="Medical history contains")
 
     # Create Column Data Source that will be used by the plot
@@ -246,7 +246,7 @@ def bkapp(doc):
                                                         "SD", "TN", "TX", "UT", "VT", "VA", "WA", "WV", "WI", "WY"])
     sex = Select(title="Sex", value="All", options=["All", "Male", "Female"])
     age = RangeSlider(title="Age", start=12, end=100, value=(12, 100), step=8)
-    allergy2 = TextInput(title="Allergy contain")
+    allergy2 = TextInput(title="Allergy contains")
     history2 = TextInput(title="Medical history contains")
 
     # Create Column Data Source that will be used by the plot
