@@ -14,7 +14,7 @@ from bokeh.application import Application
 from bokeh.application.handlers import FunctionHandler
 from bokeh.io import curdoc
 from bokeh.layouts import column, row
-from bokeh.models import ColumnDataSource, Slider, Div, Select, TextInput, RangeSlider, LinearColorMapper, ColorBar
+from bokeh.models import ColumnDataSource, Slider, Div, Select, TextInput, RangeSlider, LinearColorMapper, ColorBar, Legend
 from bokeh.models.ranges import FactorRange
 from bokeh.plotting import figure
 from bokeh.resources import get_sri_hashes_for_version
@@ -306,18 +306,21 @@ def bkapp(doc):
         control.on_change('value', lambda attr, old, new: update2())
 
     # Set up figure
-    p2 = figure(x_range=vaccines, width=400, height=400, title="Symptom prevalence", \
+    p2 = figure(x_range=vaccines, width=500, height=400, title="Symptom prevalence", \
                 toolbar_location=None, tools="")
 
-    p2.vbar(x=dodge('Vaccine Manufacturer', -0.28, range=p2.x_range), top=symptoms[0], source=source2, width=0.1, color='#a6cee3')
-    p2.vbar(x=dodge('Vaccine Manufacturer', -0.14, range=p2.x_range), top=symptoms[1], source=source2, width=0.1, color='#1f78b4')
-    p2.vbar(x=dodge('Vaccine Manufacturer', 0.0, range=p2.x_range), top=symptoms[2], source=source2, width=0.1, color='#b2df8a')
-    p2.vbar(x=dodge('Vaccine Manufacturer', 0.14, range=p2.x_range), top=symptoms[3], source=source2, width=0.1, color='#33a02c')
-    p2.vbar(x=dodge('Vaccine Manufacturer', 0.28, range=p2.x_range), top=symptoms[4], source=source2, width=0.1, color='#fb9a99')
+    vbar1 = p2.vbar(x=dodge('Vaccine Manufacturer', -0.28, range=p2.x_range), top=symptoms[0], source=source2, width=0.1, color='#a6cee3')
+    vbar2 = p2.vbar(x=dodge('Vaccine Manufacturer', -0.14, range=p2.x_range), top=symptoms[1], source=source2, width=0.1, color='#1f78b4')
+    vbar3 =  p2.vbar(x=dodge('Vaccine Manufacturer', 0.0, range=p2.x_range), top=symptoms[2], source=source2, width=0.1, color='#b2df8a')
+    vbar4 = p2.vbar(x=dodge('Vaccine Manufacturer', 0.14, range=p2.x_range), top=symptoms[3], source=source2, width=0.1, color='#33a02c')
+    vbar5 = p2.vbar(x=dodge('Vaccine Manufacturer', 0.28, range=p2.x_range), top=symptoms[4], source=source2, width=0.1, color='#fb9a99')
         
     p2.x_range.range_padding = 0.1
     p2.xgrid.grid_line_color = None
     p2.y_range.start = 0
+
+    legend = Legend(items=[(symptoms[0], [vbar1]), (symptoms[1], [vbar2]), (symptoms[2], [vbar3]), (symptoms[3], [vbar4]), (symptoms[4], [vbar5])])
+    p2.add_layout(legend, "right")
     # p2.legend.location = "top_right"
     # p2.legend.orientation = "horizontal"
 
