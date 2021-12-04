@@ -17,17 +17,14 @@ export const initialValues: IDemographics = {
   allergies: "",
 };
 
-export function predictSymptoms(
+export async function predictSymptoms(
   demographics: IDemographics
 ): Promise<string[]> {
-  return new Promise<string[]>((resolve) =>
-    setTimeout(() => resolve(["symptom1", "testsymptom2"]), 500)
-  );
-  // try {
-  //     const response = await axios.post('/predict-symptoms', symptoms)
-  //     return response.data
-  // }
-  // catch(e) {
-  //     return []
-  // }
+  try {
+      const response = await axios.post('/predict-symptoms', demographics)
+      return response.data
+  }
+  catch(e) {
+      return []
+  }
 }
