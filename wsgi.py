@@ -22,6 +22,8 @@ from server.config import (
 logging.basicConfig(level=logging.INFO)
 log = logging.getLogger(__name__)
 
+t2 = Thread(target=start_tornado, daemon=True)
+t2.start()
 # get sockets, so bkapp and app can talk
 bk_sockets, bk_port = get_sockets()
 
@@ -33,8 +35,6 @@ bokeh_url = BOKEH_URL.replace('$PORT', str(bk_port))
 log.info("Bokeh Server App Running at: %s", bokeh_url)
 
 # start flask server
-t2 = Thread(target=start_tornado, daemon=True)
-t2.start()
 
 log.info("Flask + Bokeh Server App Running at: %s", FLASK_URL)
 

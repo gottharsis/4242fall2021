@@ -59,14 +59,31 @@ logging.basicConfig(level=logging.INFO)
 log = logging.getLogger(__name__)
 
 
-app = Flask(__name__)
+app = Flask(__name__, static_folder='templates/static')
 CORS(app)
 app.config["CORS_HEADERS"] = "Content-Type"
 app.config["SECRET_KEY"] = "secret!"
 
 
+@app.route("/", defaults = {'path': ''})
+@app.route("/<path:path>")
+def index(path):
+    """
+    Default route: returns the React app
+    """
+    return render_template('index.html')
+
+@app.route("/route2")
+def test():
+    """
+    Test route to contrast with server route
+    """
+    return "Route 2"
+
+
+
 @app.route("/seagraph", methods=["GET"])
-def index():
+def seagraph_test():
     """Index"""
     resources = bokeh_cdn_resources()
     script = server_document(FLASK_URL + BOKEH_PATH, resources=None)
