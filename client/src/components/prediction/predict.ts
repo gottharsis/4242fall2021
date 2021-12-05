@@ -56,7 +56,7 @@ export const STATES = [
   "PA",
   "RI",
   "SC",
-  "Dakota",
+  "SD",
   "TN",
   "TX",
   "UT",
