@@ -1,12 +1,11 @@
 import React from 'react'
 import { Link } from 'react-router-dom'
 import GraphsPage from './graphs/graphs'
+import "./homepage.css"
 
 export default function Homepage () {
   return (
-    <div className="homepage">
-      4242 fall 2021 project homepage
-      <Link to="/test"> lsdkfjdlskfj</Link>
+    <div className="homepage" style={{ height: '100%'} }>
       <GraphsPage />
     </div> 
   )

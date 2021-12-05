@@ -22,7 +22,7 @@ export async function predictSymptoms(
 ): Promise<string[]> {
   try {
       const response = await axios.post('/predict-symptoms', demographics)
-      return response.data
+      return response.data.symptoms
   }
   catch(e) {
       return []

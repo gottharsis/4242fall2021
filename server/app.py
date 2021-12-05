@@ -53,6 +53,7 @@ from server.config import (
     get_bokeh_port,
 )
 from server.wsproxy import WebSocketProxy
+from server.predict import predict_symptoms
 
 
 logging.basicConfig(level=logging.INFO)
@@ -72,6 +73,13 @@ def index(path):
     Default route: returns the React app
     """
     return render_template('index.html')
+
+
+@app.route("/predict-symptoms", methods=['POST'])
+def predict():
+    data = request.json
+    symptoms = predict_symptoms(data)
+    return { "symptoms": symptoms, "demographics": data }
 
 @app.route("/route2")
 def test():
