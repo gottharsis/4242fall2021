@@ -5,6 +5,7 @@ import { useNavigate } from "react-router-dom";
 import {
   initialValues,
   MANUFACTURERS,
+  STATES,
   predictSymptoms,
   IDemographics,
 } from "./predict";
@@ -35,7 +36,7 @@ function PForm({
 }
 
 export default function PredictionForm() {
-    const navigate = useNavigate();
+  const navigate = useNavigate();
   const onSubmit = async (
     values: IDemographics,
     { setSubmitting }: { setSubmitting: any }
@@ -83,6 +84,22 @@ export default function PredictionForm() {
                 >
                   <option value="M"> Male </option>
                   <option value="F"> Female </option>
+                </Form.Select>
+              </Form.Group>
+
+              <Form.Group className="mb-3">
+                <Form.Label> State </Form.Label>
+                <Form.Select
+                  name="state"
+                  value={values.state}
+                  onChange={handleChange}
+                  onBlur={handleBlur}
+                >
+                  {STATES.map((state) => (
+                    <option key={state} value={state}>
+                      {state}
+                    </option>
+                  ))}
                 </Form.Select>
               </Form.Group>
 
